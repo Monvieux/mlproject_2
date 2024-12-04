@@ -12,9 +12,7 @@ from PyQt5.QtWidgets import *
 pfolder = os.getcwd()
 fdataset = os.path.join(pfolder,'src','Datasets','add_2_numbers.csv')
 fmodel = os.path.join(pfolder,'src','Models','add_2_numbers')
-fui = os.path.join(pfolder,'src','UI','Add two numbers.ui')
-
-print(fui)
+fui = os.path.join(pfolder,'src','UI','add_2_numbers.ui')
 
 data = pd.read_csv(fdataset)
 X = data[['x','y']] # features
@@ -38,7 +36,6 @@ class Ui(QMainWindow):
     def click_button_valid(self):
         model = joblib.load(fmodel)
         result = model.predict([[float(self.txt_first_number.text()),float(self.txt_second_number.text())]])
-        print(float(result.item()))
         self.lbl_result.setText(str(round(result.item(),2)))
 
 if __name__ == '__main__':
